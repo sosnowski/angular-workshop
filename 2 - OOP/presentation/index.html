@@ -1,0 +1,417 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>OOP JavaScript</title>
+
+    <meta name="author" content="Damian Sosnowski" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div id="impress">
+    <div id="intro" class="step" data-x="0" data-y="0">
+        <h1>Fast track<br /> to web applications</h1>
+		<p style="text-align: center;">
+			<img src="js.png" width="200"/>
+		</p>
+    </div>
+
+
+
+	<div class="step" data-x="0" data-y="1000">
+		<h1>OOP JavaScript</h1>
+	</div>
+
+	<div class="step" data-x="1000" data-y="1000">
+		<ul>
+			<li>JavaScript is object oriented</li>
+			<li>However its OOP is misunderstood</li>
+			<li>Truth to be told it's also confusing</li>
+		</ul>
+	</div>
+
+	<div class="step" data-x="2000" data-y="1000">
+		<h2>Objects in JavaScript are very simple</h2>
+
+		<pre class="prettyprint">
+var obj = {};
+obj.key = "smth";
+
+obj.method = function () {
+	//do smth;
+};
+obj.method();
+
+var user = {
+	name: 'Damian',
+	surname: 'Sosnowski',
+	language: 'JS'
+};
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1000">
+		<h1>But the inheritance is confusing...</h1>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1000">
+		<h1>Prototypes!</h1>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1200">
+		<h2>What is a prototype?</h2>
+
+		<pre class="prettyprint">
+var obj = {
+	key1: 'value',
+	key2: 'value2'
+};
+
+Object.keys(obj); //['key1', 'key2']
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1400">
+		<pre class="prettyprint">
+			obj.toString(); // "[object Object]"
+		</pre>
+
+		<pre class="prettyprint">
+		 obj.toString === obj2.toString
+		</pre>
+
+		<p>How?</p>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1600">
+		<h2>Prototype</h2>
+		<p style="text-align: center"><img src="proto.png"/></p>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1650">
+		<pre class="prettyprint">
+		var obj = {}; // obj = new Object();
+		obj.__proto__ === Object.prototype;
+		Object.getPrototypeOf(obj) === Object.prototype;
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="1800">
+		<h2>How can we create object with a prototype?</h2>
+		<pre class="prettyprint">
+var proto = {
+	sayHello: function () {
+		console.log('Hi ' + this.name + '!');
+	},
+	name: '-missing-'
+};
+
+var obj = Object.create(proto);
+obj.name = 'Damian';
+
+var obj2 = Object.create(proto);
+obj.name = 'Zdzichu';
+
+obj.sayHello === obj2.sayHello; // true
+
+obj.sayHello(); // Hi Damian!
+obj2.sayHello(); // Hi Zdzichu
+		</pre>
+	</div>
+	<div class="step" data-x="300" data-y="1900">
+	<pre class="prettyprint">
+var obj3 = Object.create(proto);
+obj3.name; //-missing-
+
+obj3.name = 'Gucio';
+obj3.name; //Gucio
+
+delete obj3.name;
+
+obj3.name; //-missing
+	</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="2000">
+		<h2>Inheritance === prototype chain</h2>
+
+		<p style="text-align: center"><img src="chain.png"/></p>
+
+	</div>
+
+	<div class="step" data-x="3000" data-y="2200">
+		<h2>Inheritance - no clases</h2>
+
+		<pre class="prettyprint">
+var dogProto = {
+	run: function () {
+	    console.log('I run!');
+	},
+	bark: function () {
+	    console.log('Hau! Hau!');
+	},
+	hasTail: true
+};
+
+var smallDogProto = Object.create(dogProto);
+
+smallDogProto.bark = function () {
+	 console.log('Pi pi pi');
+}
+smallDogProto.isCute = true;
+
+var createSmallDog = function () {
+	return Object.create(smallDogProto);
+}
+
+var smallDog = createSmallDog();
+smallDog.run(); // I run!
+smallDog.bark(); // Pi pi pi
+smallDog.isCute; // true
+smallDog.hasTail; // true
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="2400">
+	<pre class="prettyprint">
+smallDogProto.someNewAttr = 12345;
+
+smallDog.someNewAttr; //12345
+
+smallDogProto.isPrototypeOf(smallDog);
+dogProto.isPrototypeOf(smallDog);
+	</pre>
+	</div>
+
+	<div class="step" data-x="0" data-y="3000">
+		<h1>"Classes"</h1>
+	</div>
+
+	<div class="step" data-x="1000" data-y="3000">
+		<h2>There are classes in JavaScript</h2>
+		<pre class="prettyprint">
+var obj = new Object();
+var arr = new Array();
+var str = new String();
+		</pre>
+
+		<pre class="prettyprint">
+var obj = new MyClass();
+		</pre>
+	</div>
+
+
+	<div class="step" data-x="1000" data-y="3200">
+		<h2>Class is a function...</h2>
+		<pre class="prettyprint">
+function MyClass() {
+
+}
+
+var inst = new MyClass();
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="3400">
+		<h2>What about attributes?</h2>
+
+		<pre class="prettyprint">
+var MyClass = function (arg1) {
+	this.myName = arg1;
+	this.age = 18;
+
+	this.doSmth = function () {}
+}
+
+var inst1 = new MyClass('Gucio'), inst2 = new MyClass('Zdzisio');
+
+inst1.myName; // Gucio
+inst1.doSmth();
+
+inst2.myName; //Zdzisio
+
+inst1.doSmth !== inst2.doSmth; // true
+		</pre>
+	</div>
+
+	<div class="step" data-x="2000" data-y="3000">
+		<h1>Ok, but what about prototype?</h1>
+	</div>
+
+	<div class="step" data-x="2000" data-y="3200">
+		<pre class="prettyprint">
+MyClass.prototype
+		</pre>
+	</div>
+
+	<div class="step" data-x="2000" data-y="3400">
+		<pre class="prettyprint">
+MyClass.prototype.someMethod = function () {};
+MyClass.prototype.someKey = 'default value';
+		</pre>
+	</div>
+
+	<div class="step" data-x="2000" data-y="3600">
+		<pre class="prettyprint">
+var MyClass = function (arg1) {
+	this.myName = arg1;
+}
+
+MyClass.prototype.sayHello = function () {
+	console.log('Hi I am ' + this.myName + '. I write in ' + this.lang);
+};
+MyClass.prototype.lang = 'JavaScript';
+		</pre>
+	</div>
+
+	<div class="step" data-x="2000" data-y="3800">
+		<pre class="prettyprint">
+var dev1 = new MyClass('Damian');
+var dev2 = new MyClass('Pawel');
+dev2.lang = 'C#';
+
+dev1.sayHello === dev2.sayHello;
+
+dev1.sayHello(); // Hi I am Damian. I write in JavaScript
+dev2.sayHello(); // Hi I am Pawel. I write in C#
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="3000">
+<h2>But how it works? Is class really just a function?</h2>
+
+<pre class="prettyprint">
+var inst = MyClass('Damian'); //no "new"!!
+//No error!
+
+inst === undefined;
+
+window.myName; // 'Damian'
+</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="4000">
+		<h1>So where is the magic?</h1>
+		<p style="text-align: center"><img src="new_instance.png"/></p>
+	</div>
+
+	<div class="step" data-x="3000" data-y="4200">
+		<h2>"new" operator!!</h2>
+		<ul>
+			<li>Create object</li>
+			<li>Take <b>prototype</b> property of the <b>contructor function</b> and make it a part of <b>prototype chain</b> of the object</li>
+			<li>Execute the constructor function in the context of the created object</li>
+			<li>If constructor returns some object, return it. If not, return the initially created object</li>
+		</ul>
+	</div>
+
+	<div class="step" data-x="2000" data-y="4000">
+		<h2>One more thing about operators...</h2>
+		<pre class="prettyprint">
+typeof dev1; // "object"
+
+dev1 instanceof MyClass // true
+		</pre>
+	</div>
+
+	<div class="step" data-x="4000" data-y="4000">
+		<h1>So, let's write the code!</h1>
+	</div>
+
+	<div class="step" data-x="0" data-y="5000">
+		<h1>New operator</h1>
+	</div>
+
+	<div class="step" data-x="0" data-y="5000">
+		<h1>Class inheritance</h1>
+
+		<p>The goal is the same: create the proper prototype chain</p>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+	<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	// Take a ParentClass.prototype and make it a part of
+	// ChildClass.prototoype prototope chain
+}
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+		<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	ChildClass.prototype = ParentClass.prototype;
+}
+		</pre>
+		<pre class="prettyprint">
+ChildClass.prototype.newChildMethod = function () {};
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+		<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	ChildClass.prototype = new ParentClass();
+}
+		</pre>
+		<pre class="prettyprint">
+var ParentClass = function () {
+	this.something = "value";
+}
+ChildClass.prototype.newChildMethod = function () {}; //ok
+ChildClass.prototype.something; // value
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+		<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	var prot = {};
+	prot.prototype = ParentClass.prototype;
+
+	ChildClass.prototype = prot;
+}
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+		<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	ChildClass.prototype = Object.create(ParentClass.prototype);
+}
+		</pre>
+	</div>
+
+	<div class="step" data-x="1000" data-y="5000">
+		<pre class="prettyprint">
+var inherit = function (ParentClass, ChildClass) {
+	var F = function () {};
+	F.prototype = Parent.prototype;
+	ChildClass.prototype = new F();
+	ChildClass.prototype.constructor = ChildClass;
+}
+		</pre>
+	</div>
+
+	<div class="step" data-x="3000" data-y="9000">
+		<h1>Final task</h1>
+	</div>
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+
+<script src="impress.js"></script>
+<script>impress().init();</script>
+
+
+</body>
+</html>

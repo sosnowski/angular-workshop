@@ -26,7 +26,7 @@
 //		console.log(this.key); //value
 //	}, customCtx);
 //
-//	ee.emit('test', [1, 2]);
+//	ee.emit('test', 1, 2);
 //
 //	removeListener(); //removes my listener from the event emitter;
 //

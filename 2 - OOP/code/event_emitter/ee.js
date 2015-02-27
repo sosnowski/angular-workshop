@@ -11,11 +11,30 @@
 	};
 
 	EE.prototype.on = function (eventName, listener, context) {
+		var obj, me = this;
+		this.listeners[eventName] = this.listeners[eventName] || [];
 
+		obj = {
+			list: listener,
+			ctx: context
+		};
+		this.listeners[eventName].push(obj);
+
+		return function () {
+			var ind = me.listeners[eventName].indexOf(obj);
+			if (ind > -1) {
+				me.listeners[eventName].splice(ind, 1);
+			}
+		};
 	};
 
-	EE.prototype.emit = function (eventName, data) {
-
+	EE.prototype.emit = function (eventName) {
+		var args = Array.prototype.slice.call(arguments, 1);
+		if (this.listeners[eventName]) {
+			this.listeners[eventName].forEach(function (listenerData) {
+				listenerData.list.apply(listenerData.ctx || window, args);
+			});
+		}
 	};
 
 //	var ee = new EE();

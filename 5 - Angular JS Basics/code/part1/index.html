@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp">
 <head>
 	<meta charset="UTF-8">
 	<title>First Angular app</title>
 	<link rel="stylesheet" href="css/app.css">
 </head>
-<body>
+<body ng-controller="MyCtrl">
 	<div>
-		<p><input type="text" name="whatever"/><button>Clear</button></p>
-		<p>Hello <strong>Damian</strong></p>
+		<p><input type="text" name="whatever" ng-model="name"/><button ng-click="clear()">Clear</button></p>
+		<p>Hello <strong>{{name}}</strong></p>
 	</div>
 
 

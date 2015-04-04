@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JavaScript induction</title>
+
+		<meta name="author" content="Damian Sosnowski">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>Object Oriented JavaScript</h2>
+					<ul>
+						<li>JavaScript is object oriented</li>
+						<li>However its OOP is misunderstood</li>
+						<li>Truth to be told it's also confusing</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Objects are very simple</h4>
+					<pre class="fragment"><code>
+var obj = {};
+obj.name = 'Jack';</code></pre><pre class="fragment"><code>
+obj.sayHello = function () {
+    return 'Hi, ' + this.name;
+};
+
+obj.sayHello(); // Hi, Jack</code></pre><pre class="fragment"><code>
+
+var obj = {
+    name: 'Jack',
+    sayHello: function () {
+        return 'Hi, ' + this.name;
+    }
+};</code></pre>
+				</section>
+
+				<section>
+					<h4>But inheritance is confusing!</h4>
+					<h2 class="fragment">Prototypes</h2>
+				</section>
+
+				<section>
+					<h2>How can we create object with a prototype?</h2>
+					<pre class="prettyprint fragment"><code>
+var Person = {
+    sayHello: function () {
+        return 'Hi ' + this.name + '!';
+    }
+};
+</code></pre><pre class="fragment"><code>
+var obj = Object.create(Person);
+obj.name = 'Damian';
+
+var obj2 = Object.create(Person);
+obj.name = 'Zdzichu';
+</code></pre><pre class="fragment"><code>
+obj.sayHello(); // Hi Damian!
+obj2.sayHello(); // Hi Zdzichu!
+</code></pre><pre class="fragment"><code>
+obj.sayHello === obj2.sayHello; // true
+</code></pre>
+				</section>
+
+
+				<section>
+					<h4>Inheritance - no classes</h4>
+					<pre class="fragment"><code>
+var Dog = {
+    run: function () {
+        return 'I run!';
+    },
+    bark: function () {
+        return 'Hau! Hau!';
+    }
+};
+
+var dog = Object.create(Dog);
+dog.bark(); // Hau! Hau!</code></pre>
+<pre class="fragment"><code>
+var SmallDog = Object.create(Dog);
+SmallDog.bark = function () {
+    return 'pi pi pi';
+}
+</code></pre>
+<pre class="fragment"><code>
+var smallDog = Object.create(SmallDog);
+smallDog.run(); // I run!
+smallDog.bark(); // Pi pi pi</code></pre>
+
+				</section>
+
+				<section>
+					<h3>Inheritance === prototype chain</h3>
+
+					<p style="text-align: center"><img src="img/chain.png"/></p>
+				</section>
+
+				<section>
+					<h3>Prototype</h3>
+					<pre><code>
+obj.prototype; // NO!
+obj.__proto__;
+Object.getPrototypeOf(obj);
+
+obj.hasOwnProperty(prop) </code></pre>
+				</section>
+
+				<section>
+					<h2>Exercise</h2>
+					<p class="strong">Lesson3/code/animals</p>
+				</section>
+
+				<section>
+					<h2>Classes</h2>
+					<pre class="fragment"><code>
+var arr = new Array();
+var obj = new Object();
+
+var myInst = new MyClass();</code></pre>
+				</section>
+
+				<section>
+					<h4>Class is ... a function</h4>
+					<pre><code>
+function MyClass() {
+
+}
+
+var inst = new MyClass();</code></pre>
+				</section>
+
+				<section>
+					<pre><code>
+var Person = function (name) {
+	this.myName = name;
+	this.age = 18;
+
+	this.doSmth = function () {}
+}</code></pre>
+<pre><code>
+var inst1 = new Person('Gucio'), inst2 = new Person('Zdzisio');
+
+inst1.myName; // Gucio
+inst1.doSmth();
+
+inst1.doSmth !== inst2.doSmth; // true</code></pre>
+				</section>
+
+				<section>
+					<h4>Prototype in classes</h4>
+					<pre><code>
+var Person = function (name) {
+	this.myName = name;
+}
+
+Person.prototype.sayHello = function () {
+	return 'Hi I am ' + this.myName + '.';
+};</code></pre>
+					<pre><code>
+var dev1 = new Person('Damian');
+var dev2 = new Person('Pawel');
+
+dev1.sayHello === dev2.sayHello;
+
+dev1.sayHello(); // Hi I am Damian.
+dev2.sayHello(); // Hi I am Pawel.</code></pre>
+				</section>
+
+				<section>
+					<h2>But how it works? Is class really just a function?</h2>
+
+					<pre><code>
+var inst = MyClass('Damian'); //no "new"!!
+//No error!
+
+inst === undefined;
+
+window.myName; // 'Damian'</code></pre>
+				</section>
+
+				<section>
+					<h3>So, where is the magic</h3>
+					<h2 class="fragment">"new" operator!!</h2>
+					<ul class="fragment">
+						<li>Create object</li>
+						<li>Take <b>prototype</b> property of the <b>contructor function</b> and make it a part of <b>prototype chain</b> of the object</li>
+						<li>Execute the constructor function in the context of the created object</li>
+						<li>If constructor returns some object, return it. If not, return the initially created object</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Exercise</h2>
+					<p class="strong">Lesson3/code/newObject</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					// { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					// { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'plugin/zoom-js/zoom.js', async: true },
+					// { src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

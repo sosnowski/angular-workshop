@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>JavaScript induction</title>
+
+		<meta name="author" content="Damian Sosnowski">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>AngularJS induction</h1>
+					<h3>CSS</h3>
+					<p>Materials: <a href="https://github.com/sosnowski/angular-workshop/tree/v2">https://github.com/sosnowski/angular-workshop/tree/v2</a></p>
+				</section>
+
+				<section>
+					<h2>Cascading Style Sheets</h2>
+	        <ul>
+	            <li>Describing the look and feel of an HTML document</li>
+	            <li>Designed to enable the separation of document content from document presentation</li>
+	            <li>Allow the same markup page to be presented in different styles for different render methods</li>
+	        </ul>
+				</section>
+
+				<section>
+					<h2>Applying</h2>
+	        <ul>
+	            <li>Inline - style attribute to the relevant tag</li>
+	            <li>Internal - defined in the head section of an HTML page</li>
+	            <li>External - external file with .css extension</li>
+	        </ul>
+				</section>
+
+				<section>
+					<h2>Syntax</h2>
+	        <p style="text-align: center;"><img src="img/syntax.gif"/></p>
+				</section>
+
+				<section>
+					<h2>#id vs .class</h2>
+	        <ul>
+	            <li>
+	                <h2>ID can be used to identify one element</h2>
+	                <img src="img/id_html.png" style="display: inline-block; vertical-align: middle;"/>
+	                <h2 style="display: inline-block; vertical-align: middle; margin: 0 30px; padding: 0; text-align: center;">-></h2>
+	                <img src="img/id_css.png" style="display: inline-block; vertical-align: middle;" />
+	            </li>
+	            <li>
+	                <h2>class can be used to identify more than one element</h2>
+	                <img src="img/class_html.png" style="display: inline-block; vertical-align: middle;"/>
+	                <h2 style="display: inline-block; vertical-align: middle; margin: 0 30px; padding: 0; text-align: center;">-></h2>
+	                <img src="img/class_css.png" style="display: inline-block; vertical-align: middle;" />
+	            </li>
+	        </ul>
+				</section>
+
+				<section>
+					<h2>Cascading</h2>
+	        <h3 style="text-align: center">The CSS cascade assigns a weight to each style rule. When several rules apply, the one with the greatest weight takes precedence</h3>
+				</section>
+
+				<section>
+					<h2>Cascade Priority</h2>
+	        <div style="text-align: center"><img src="img/css_cascade.gif" alt=""></div>
+				</section>
+
+				<section>
+					<h2>Inheritance</h2>
+	        <h4 style="text-align: center">Inheritance is where specific CSS properties are passed down to descendant elements</h4>
+				</section>
+
+				<section>
+					<h2>Inheritance</h2>
+	        <h4 style="text-align: center">Only properties that make our job easier are inherited such as:</h4>
+	        <div style="text-align: center">
+	            <ul>
+	                <li>Text-related (font, line-height, text-align etc.)</li>
+	                <li>List-related (list-style, list-style-type, list-style-image etc.)</li>
+	                <li>Color</li>
+	            </ul>
+	        </div>
+				</section>
+
+				<section>
+					<h2>Grouping</h2>
+	        <h4 style="text-align: center">Don't repeat definitions. Use comma and group them!</h4>
+	        <div style="text-align: center;">
+	            <img src="img/ungrouped.png" style="display: inline-block; vertical-align: middle;"/>
+	            <h2 style="display: inline-block; vertical-align: middle; margin: 0 30px; padding: 0; text-align: center;">-></h2>
+	            <img src="img/grouped.png" style="display: inline-block; vertical-align: middle;" />
+	        </div>
+				</section>
+
+				<section>
+					<h2>Nesting</h2>
+	        <h4 style="text-align: center">How to apply styles to the common element placed in a specific container?</h4>
+	        <p style="text-align: center;"><img src="img/nesting.png"/></p>
+				</section>
+
+				<section>
+					<h2>Specificity</h2>
+	        <h4 class="ctr">If you have two (or more) conflicting CSS rules that point to the same element, there are some basic rules that a browser follows to determine which one is most specific and therefore wins out</h4>
+				</section>
+
+				<section>
+					<h2>More Specific = Greater Precedence</h2>
+	        <h4 class="ctr">If the selectors are the same then the last one will always take precedence</h4>
+	        <pre><code>
+	        p { color: red; }
+	        p { color: magenta; }
+				</code></pre>
+				</section>
+
+				<section>
+					<h2>Specificity conflicts</h2>
+	        <pre><code>
+	            <xmp class="lang-html">
+	            <div class="box">
+	                <p>My paragraph</p>
+	            </div>
+	            </xmp>
+	            <xmp class="prettyprint lang-css">
+	            .box p { color: red; }
+	            p { color: magenta; }
+	            </xmp>
+	        </code></pre>
+	        <h2 class="ctr">?</h2>
+				</section>
+
+				<section>
+					<h2>Calculating Specificity</h2>
+	        <div class="ctr"><img src="img/specificity.png" alt=""></div>
+				</section>
+
+				<section>
+					<h2>Calculating Specificity</h2>
+	        <h4 class="ctr">The actual specificity of a group of nested selectors takes some calculating:</h4>
+	        <ul class="ctr">
+	            <li>If the element has inline styling, that automatically1 wins (1,0,0,0 points)</li>
+	            <li>For each ID value, apply 0,1,0,0 points</li>
+	            <li>For each class value (or pseudo-class or attribute selector), apply 0,0,1,0 points</li>
+	            <li>For each element reference, apply 0,0,0,1 point</li>
+	        </ul>
+				</section>
+
+				<section>
+					<h2>Specificity Quiz</h2>
+					<h4 class="ctr">What color will have the paragraph?</h4>
+	<pre class="prettyprint ">
+	<xmp class="lang-css ">
+	div#main p.bar { color: red; }
+
+	.container p#foo.boo { color: green; }
+
+	#main.container p { color: blue; }
+	</xmp>
+	<xmp class="lang-html">
+	<div id="main" class="container">
+			<p id="foo" class="bar boo">Something clever goes here...</p>
+	</div>
+	</xmp>
+	</pre>
+				</section>
+
+				<section>
+					<h2>Specificity Quiz</h2>
+	        <h4 class="ctr" >The podium order: <span style="color: green;">green</span>, <span style="color: red;">red</span>, <span style="color: blue;">blue</span></h4>
+	<pre class="prettyprint ">
+	<xmp class="lang-css ">
+	2. (0,1,1,2) div#main p.bar { color: red; }
+
+	1. (0,1,2,1) .container p#foo.boo { color: green; }
+
+	3. (0,1,1,1) #main.container p { color: blue; }
+	</xmp>
+	<xmp class="lang-html">
+	<div id="main" class="container">
+	    <p id="foo" class="bar boo">Something clever goes here...</p>
+	</div>
+	</xmp>
+	</pre>
+				</section>
+
+				<section>
+					<h2>Advanced selectors</h2>
+	        <h4 class="ctr">Child selector</h4>
+	        <p class="ctr">The child selector is represented by the sign "&gt;". It allows you to target elements that are direct children of a particular element</p>
+	<pre class="prettyprint ">
+	<xmp class="lang-css ">
+	    .box > h2 {
+	        font-size: 20px;
+	    }
+	</xmp>
+	</pre>
+				</section>
+
+				<section>
+					<h2>Advanced selectors</h2>
+	        <h4 class="ctr">Adjacent selector</h4>
+	        <p class="ctr">A plus sign ("+") is used to target an adjacent sibling of an element, essentially, something immediately following something</p>
+	<pre class="prettyprint ">
+	<xmp class="lang-css ">
+	    h1 + p {
+	        font-weight: bold;
+	    }
+	</xmp>
+	</pre>
+				</section>
+
+				<section>
+					<h2>Advanced selectors</h2>
+	        <h4 class="ctr"><a href="../code/selectors.html">Play! Selectors</a></h4>
+				</section>
+
+				<section>
+		        <h2>Pseudo-classes</h2>
+		        <h4 style="text-align: center;">A CSS pseudo-class is a keyword added to selectors that specifies a special state of the element to be selected</h4>
+		        <div style="text-align: center;"><img src="img/pseudo_classes.png" alt=""></div>
+				</section>
+
+				<section>
+		        <h2>Pseudo-elements</h2>
+		        <h4 style="text-align: center;">Just like pseudo-classes, pseudo-elements are added to selectors but instead of describing a special state, they allow you to style certain parts of a document</h4>
+		        <div style="text-align: center;"><img src="img/pseudo_elements.png" alt=""></div>
+				</section>
+				<section>
+		        <h2>Before and After content</h2>
+		        <h4 style="text-align: center;">The before and after pseudo elements are used in conjunction with the content property to place content either side of a box without touching the HTML</h4>
+		        <div style="text-align: center;"><img src="img/before_after.png" alt=""></div>
+				</section>
+
+				<section>
+		        <h2>Shorthand properties</h2>
+		        <h4 style="text-align: center;">Some CSS properties allow a string of values, replacing the need for a number of properties. These are represented by values separated by spaces</h4>
+				</section>
+
+				<section>
+		        <h2>Shorthand properties - syntax</h2>
+		        <div style="text-align: center;">
+		            <img src="img/shorthand_left.png" style="display: inline-block; vertical-align: middle;"/>
+		            <h2 style="display: inline-block; vertical-align: middle; margin: 0 30px; padding: 0; text-align: center;">-></h2>
+		            <img src="img/shorthand_right.png" style="display: inline-block; vertical-align: middle;" />
+		        </div>
+				</section>
+
+				<section>
+					<h2>Box Model</h2>
+	        <h4 class="ctr">The CSS box model is essentially a box that wraps around HTML elements, and it consists of: margins, borders, padding, and the actual content</h4>
+	        <div class="ctr"><img src="img/box-model.gif" alt=""></div>
+				</section>
+
+				<section>
+					<h2>Box Model</h2>
+	        <h4 class="ctr">Explanation of the parts:</h4>
+	        <ul>
+	            <li><strong>Margin</strong> - Clears an area around the border. The margin does not have a background color, it is completely transparent</li>
+	            <li><strong>Border</strong> - A border that goes around the padding and content. The border is inherited from the color property of the box</li>
+	            <li><strong>Padding</strong> - Clears an area around the content. The padding is affected by the background color of the box</li>
+	            <li><strong>Content</strong> - The content of the box, where text and images appear</li>
+	        </ul>
+				</section>
+
+				<section>
+					<h2>Box Model - dimensions</h2>
+	        <h4 class="ctr">When you set the width and height properties of an element with CSS, you just set the width and height of the <strong>content area</strong>. To calculate the full size of an element, you must also add the padding, borders and margins.</h4>
+				</section>
+
+				<section>
+					<h2>Box Model</h2>
+	        <h4 class="ctr">Alter the default CSS box model</h4>
+	<pre><code>
+	<xmp class="lang-css ">
+	    -moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	</xmp>
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Box Model</h2>
+	        <h4 class="ctr">Possible values</h4>
+	<pre class="prettyprint lang-css">
+	/* default style as specified by the CSS standard */
+	box-sizing: content-box;
+	</pre>
+	<pre class="prettyprint lang-css ">
+	/* the width and height include the padding size, not the border or margin */
+	box-sizing: padding-box;
+	</pre>
+	<pre class="prettyprint lang-css ">
+	/* the width and height include the padding and border, but not the margin */
+	box-sizing: border-box;
+	</pre>
+				</section>
+
+				<section>
+					<h2>Box Model - Quiz</h2>
+	        <h4 class="ctr">Calculate the size of the content depending on the box-sizing property</h4>
+	        <div style="display: inline-block; background: #f00; width: 280px; height: 280px; border: 40px solid #800; padding: 25px; color: black; box-sizing: content-box;">
+	            <div style="height: 100%; width: 100%; background: #ddd;">
+
+	            </div>
+	        </div>
+	        <div style="display: inline-block; vertical-align: top; margin-left: 40px; font-size: 30px; line-height: 1.4em">
+	            width: <strong>200px</strong><br>
+	            height: <strong>200px</strong><br>
+	            border-width: <strong>40px</strong><br>
+	            padding: <strong>25px</strong><br>
+	            margin: <strong>5px</strong>
+	            <hr>
+	            <strong>content-box</strong>: ?<br>
+	            <strong>padding-box</strong>: ?<br>
+	            <strong>border-box</strong>: ?
+	        </div>
+				</section>
+
+				<section>
+					<h2>Box Model - Quiz</h2>
+	        <h4 class="ctr">Results</h4>
+	        <div style="display: inline-block; background: #f00; width: 280px; height: 280px; border: 40px solid #800; padding: 25px; color: black; box-sizing: content-box;">
+	            <div style="height: 100%; width: 100%; background: #ddd;">
+
+	            </div>
+	        </div>
+	        <div style="display: inline-block; vertical-align: top; margin-left: 40px; font-size: 30px; line-height: 1.4em">
+	            width: <strong>200px</strong><br>
+	            height: <strong>200px</strong><br>
+	            border-width: <strong>40px</strong><br>
+	            padding: <strong>25px</strong><br>
+	            margin: <strong>5px</strong>
+	            <hr>
+	            <strong>content-box</strong>: 200px &divide; 200px<br>
+	            <strong>padding-box</strong>: 150px &divide; 150px<br>
+	            <strong>border-box</strong>: 70px &divide; 70px
+	        </div>
+				</section>
+
+				<section>
+					<h2>Common css definitions</h2>
+				</section>
+
+				<section>
+					<h2>Colors</h2>
+					<p style="text-align: center;"><img src="img/css_colors.jpg"/></p>
+				</section>
+
+				<section>
+					<h2>Possible values</h2>
+	        <p style="text-align: center;"><img src="img/color_values.png"/></p>
+				</section>
+				<section>
+			        <h1>HSL and RGBa</h1>
+			        <p style="text-align: center;"><img src="img/css_hsl.png"/>&nbsp;<img src="img/css_rgba.png"/></p>
+				</section>
+
+				<section>
+					<h2>Borders</h2>
+	        <p style="text-align: center;">
+	            <img src="img/css_border.png"/><br /><br />
+	            <img src="img/css_border_short.png"/>
+	        </p>
+				</section>
+
+
+				<section>
+		        <h2>Display</h2>
+		        <h4 style="text-align: center;">The display CSS property specifies the type of rendering box used for an element</h4>
+				</section>
+				<section>
+		        <h2>display: inline;</h2>
+		        <h4 style="text-align: center;">Boxes that are displayed inline follow the flow of a line. Only padding and margin can be applied.</h4>
+				</section>
+				<section>
+		        <h2>display: block;</h2>
+		        <h4 style="text-align: center;">Makes a box standalone, fitting the entire width of its containing box, with an effective line break before and after it</h4>
+				</section>
+				<section>
+		        <h2>display: inline-block;</h2>
+		        <h4 style="text-align: center;">Generates a block element box that will be flowed with surrounding content as if it were a single inline box</h4>
+				</section>
+				<section>
+		        <h2>display: [other types];</h2>
+		        <h4 style="text-align: center;">There are many possible types that allow to display elements in a specific way:</h4>
+		        <div style="text-align: center;">
+		            <ul>
+		                <li>display: none;</li>
+		                <li>display: table;</li>
+		                <li>display: list-item;</li>
+		                <li>display: flex;</li>
+		                <li>display: grid; (experimental)</li>
+		                <li>etc.</li>
+		            </ul>
+		        </div>
+				</section>
+
+				<section>
+		        <h2>Positioning</h2>
+		        <h4 style="text-align: center;">The position property is used to define whether a box is absolute, relative, static or fixed</h4>
+				</section>
+				<section>
+		        <h2>position: static;</h2>
+		        <h4 style="text-align: center;"><strong>static</strong> is the default value and renders a box in the normal order of things, as they appear in the HTML</h4>
+				</section>
+				<section>
+		        <h2>position: relative;</h2>
+		        <h4 style="text-align: center;"><strong>relative</strong> is much like static but the box can be offset from its original position with the properties top, right, bottom and left</h4>
+				</section>
+				<section>
+		        <h2>position: absolute;</h2>
+		        <h4 style="text-align: center;"><strong>absolute</strong> pulls a box out of the normal flow of the HTML and delivers it to a world all of its own. The absolute box can be placed anywhere on the page using top, right, bottom and left</h4>
+				</section>
+				<section>
+		        <h2>position: fixed;</h2>
+		        <h4 style="text-align: center;"><strong>fixed</strong> behaves like absolute, but it will absolutely position a box in reference to the browser window as opposed to the web page, so fixed boxes should stay exactly where they are on the screen even when the page is scrolled</h4>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					// { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					// { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					// { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					// { src: 'plugin/zoom-js/zoom.js', async: true },
+					// { src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

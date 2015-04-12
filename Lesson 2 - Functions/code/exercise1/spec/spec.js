@@ -2,7 +2,7 @@ describe("addManyValues function", function() {
 	var addManyValues;
 
 	beforeEach(function () {
-		addManyValues = window.UAM.addManyValues;
+		addManyValues = window.APP.addManyValues;
 	});
 
 	it('The function addManyValues should be defined', function () {

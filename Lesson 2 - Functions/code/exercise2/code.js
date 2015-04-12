@@ -1,15 +1,15 @@
 (function (global) {
 	var mapArray;
 
-	if (!global.UAM) {
-		global.UAM = {};
+	if (!global.APP) {
+		global.APP = {};
 	}
 
 	mapArray = function (array, callback, ctx) {
 
 	};
 
-	global.UAM.mapArray = mapArray;
+	global.APP.mapArray = mapArray;
 
 }(window));
 

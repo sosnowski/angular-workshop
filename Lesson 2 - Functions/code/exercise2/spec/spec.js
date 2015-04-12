@@ -1,7 +1,7 @@
 describe("mapArray function", function() {
 
 	it('mapArray should be a function', function () {
-		expect(typeof UAM.mapArray).toBe('function');
+		expect(typeof APP.mapArray).toBe('function');
 	});
 
 	describe('Basic mapping', function () {
@@ -13,7 +13,7 @@ describe("mapArray function", function() {
 				return element * 2;
 			});
 
-			newArray = UAM.mapArray(arr, spy);
+			newArray = APP.mapArray(arr, spy);
 		});
 
 		it('Should call the callback for every array element', function () {
@@ -54,7 +54,7 @@ describe("mapArray function", function() {
 				by: 2
 			};
 
-			newArray = UAM.mapArray(arr, spy, ctx);
+			newArray = APP.mapArray(arr, spy, ctx);
 		});
 
 

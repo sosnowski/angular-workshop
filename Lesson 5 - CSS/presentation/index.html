@@ -51,9 +51,23 @@
 				<section>
 					<h2>Applying</h2>
 	        <ul>
-	            <li>Inline - style attribute to the relevant tag</li>
-	            <li>Internal - defined in the head section of an HTML page</li>
-	            <li>External - external file with .css extension</li>
+	            <li>Inline - style attribute to the relevant tag
+							<pre><code><p style="text-align: center;">Some text</p></code></pre>
+							</li>
+	            <li>Internal - defined in the head section of an HTML page
+							<pre><code>
+<style>
+	p {
+		text-align: center;
+	}
+</style></pre></code>
+							</li>
+	            <li>External - external file with .css extension
+							<pre><code>//styles.css
+p {
+	text-align: center;
+}</code></pre>
+							</li>
 	        </ul>
 				</section>
 
@@ -82,7 +96,7 @@
 
 				<section>
 					<h2>Cascading</h2>
-	        <h3 style="text-align: center">The CSS cascade assigns a weight to each style rule. When several rules apply, the one with the greatest weight takes precedence</h3>
+	        <h3 style="text-align: center">The CSS cascade assigns a weight to each style APP. When several APPs apply, the one with the greatest weight takes precedence</h3>
 				</section>
 
 				<section>
@@ -125,7 +139,7 @@
 
 				<section>
 					<h2>Specificity</h2>
-	        <h4 class="ctr">If you have two (or more) conflicting CSS rules that point to the same element, there are some basic rules that a browser follows to determine which one is most specific and therefore wins out</h4>
+	        <h4 class="ctr">If you have two (or more) conflicting CSS APPs that point to the same element, there are some basic APPs that a browser follows to determine which one is most specific and therefore wins out</h4>
 				</section>
 
 				<section>
@@ -140,15 +154,12 @@
 				<section>
 					<h2>Specificity conflicts</h2>
 	        <pre><code>
-	            <xmp class="lang-html">
 	            <div class="box">
 	                <p>My paragraph</p>
 	            </div>
-	            </xmp>
-	            <xmp class="prettyprint lang-css">
+
 	            .box p { color: red; }
 	            p { color: magenta; }
-	            </xmp>
 	        </code></pre>
 	        <h2 class="ctr">?</h2>
 				</section>
@@ -172,70 +183,58 @@
 				<section>
 					<h2>Specificity Quiz</h2>
 					<h4 class="ctr">What color will have the paragraph?</h4>
-	<pre class="prettyprint ">
-	<xmp class="lang-css ">
+	<pre><code>
 	div#main p.bar { color: red; }
 
 	.container p#foo.boo { color: green; }
 
 	#main.container p { color: blue; }
-	</xmp>
-	<xmp class="lang-html">
+
 	<div id="main" class="container">
-			<p id="foo" class="bar boo">Something clever goes here...</p>
+	  <p id="foo" class="bar boo">Something clever goes here...</p>
 	</div>
-	</xmp>
-	</pre>
+</code></pre>
 				</section>
 
 				<section>
 					<h2>Specificity Quiz</h2>
 	        <h4 class="ctr" >The podium order: <span style="color: green;">green</span>, <span style="color: red;">red</span>, <span style="color: blue;">blue</span></h4>
-	<pre class="prettyprint ">
-	<xmp class="lang-css ">
+	<pre><code>
 	2. (0,1,1,2) div#main p.bar { color: red; }
-
 	1. (0,1,2,1) .container p#foo.boo { color: green; }
-
 	3. (0,1,1,1) #main.container p { color: blue; }
-	</xmp>
-	<xmp class="lang-html">
+
 	<div id="main" class="container">
 	    <p id="foo" class="bar boo">Something clever goes here...</p>
 	</div>
-	</xmp>
-	</pre>
+</code></pre>
 				</section>
 
 				<section>
 					<h2>Advanced selectors</h2>
 	        <h4 class="ctr">Child selector</h4>
 	        <p class="ctr">The child selector is represented by the sign "&gt;". It allows you to target elements that are direct children of a particular element</p>
-	<pre class="prettyprint ">
-	<xmp class="lang-css ">
-	    .box > h2 {
-	        font-size: 20px;
-	    }
-	</xmp>
-	</pre>
+	<pre><code>
+.box > h2 {
+    font-size: 20px;
+}
+	</code></pre>
 				</section>
 
 				<section>
 					<h2>Advanced selectors</h2>
 	        <h4 class="ctr">Adjacent selector</h4>
 	        <p class="ctr">A plus sign ("+") is used to target an adjacent sibling of an element, essentially, something immediately following something</p>
-	<pre class="prettyprint ">
-	<xmp class="lang-css ">
-	    h1 + p {
-	        font-weight: bold;
-	    }
-	</xmp>
-	</pre>
+	<pre><code>
+h1 + p {
+    font-weight: bold;
+}
+</code></pre>
 				</section>
 
 				<section>
 					<h2>Advanced selectors</h2>
-	        <h4 class="ctr"><a href="../code/selectors.html">Play! Selectors</a></h4>
+	        <h4 class="ctr"><a href="../code/play/selectors.html">Play! Selectors</a></h4>
 				</section>
 
 				<section>
@@ -439,6 +438,17 @@
 				<section>
 		        <h2>position: fixed;</h2>
 		        <h4 style="text-align: center;"><strong>fixed</strong> behaves like absolute, but it will absolutely position a box in reference to the browser window as opposed to the web page, so fixed boxes should stay exactly where they are on the screen even when the page is scrolled</h4>
+				</section>
+
+				<section>
+					<h3>Time to code!</h3>
+					<img src="img/css.gif"/>
+				</section>
+
+				<section>
+						<img src="../code/exercise/result.jpg" />
+
+						<a href="https://developer.mozilla.org/en-US/docs/Web/CSS">Reference</a>
 				</section>
 
 			</div>

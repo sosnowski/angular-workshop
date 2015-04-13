@@ -1,7 +1,3 @@
-angular.module('myapp').controller('MyCtrl', ["$scope", "deps1", function ($sc, dp1) {
-	$sc.name = "Gucio";
+angular.module('myapp').controller('MyCtrl', function ($scope) {
 
-	$sc.clear = function () {
-		$sc.name = '';
-	};
-}]);
+});

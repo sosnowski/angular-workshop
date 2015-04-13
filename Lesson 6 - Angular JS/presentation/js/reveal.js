@@ -1434,7 +1434,7 @@
 	}
 
 	/**
-	 * Applies JavaScript-controlled layout rules to the
+	 * Applies JavaScript-controlled layout APPs to the
 	 * presentation.
 	 */
 	function layout() {
@@ -2693,7 +2693,7 @@
 	}
 
 	/**
-	 * Enforces origin-specific format rules for embedded media.
+	 * Enforces origin-specific format APPs for embedded media.
 	 */
 	function formatEmbeddedContent() {
 

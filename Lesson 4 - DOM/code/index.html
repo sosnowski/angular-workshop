@@ -4,20 +4,21 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Game of Life</title>
+		<title>BMI</title>
 
-		<meta name="author" content="Damian Sosnowski">
-
-		<link rel="stylesheet" href="game.css">
-		<script type="text/javascript" src="game.js"></script>
+		<link rel="stylesheet" href="app.css">
+		<script type="text/javascript" src="app.js"></script>
 	</head>
 	<body>
-		<div id="game-canvas">
+	<div class="weight">
+		<h1>Select your weight</h1>
+		<input type="range"  min="0" max="100" name="weight" /> Weight <span>50</span>kg.
+	</div>
+	<div class="height">
+		<h1>Select your height</h1>
+		<input type="range"  min="0" max="240" name="height" /> Height <span>120</span>cm.
+	</div>
 
-		</div>
-
-		<button class="start">Start</button>
-		<button class="stop">Stop</button>
-		<button class="clear">Clear</button>
+	<h1>Your BMI is: <span>0</span></h1>
 	</body>
 	</script>

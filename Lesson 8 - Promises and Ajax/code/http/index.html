@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
 
-        <title>Web Applications [UAM]- by Damian Sosnowski</title>
+        <title>Web Applications - by Damian Sosnowski</title>
 
         <meta name="author" content="Damian Sosnowski">
 
@@ -13,8 +13,8 @@
     </head>
 
     <body ng-controller="AppCtrl">
-    	<ul>
-            <li ng-repeat="element in results" ng-click="clickElement(element)">{{element.name}} clicks: {{element.count}}</li>
+    	 <ul>
+            <li ng-repeat="element in results" ng-click="updateCounter(element)">{{element.name}} clicks: {{element.count}} - updated: {{element.lastUpdated}}</li>
         </ul>
 
         <p><button>Load Users</button></p>

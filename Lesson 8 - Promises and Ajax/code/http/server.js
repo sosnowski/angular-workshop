@@ -5,16 +5,19 @@ var savedData = [
 	{
 		id: 1,
 		name: 'Test1',
+		lastUpdated: new Date(),
 		count: 0
 	},
 	{
 		id: 2,
 		name: 'Test2',
+		lastUpdated: new Date(),
 		count: 0
 	},
 	{
 		id: 3,
 		name: 'Test3',
+		lastUpdated: new Date(),
 		count: 0
 	}
 ];
@@ -51,6 +54,7 @@ app.put('/elements/:id', function (req, res) {
 		res.status(404).send('Record not found');
 	} else {
 		element.count = req.body.count;
+		element.lastUpdated = new Date();
 		res.json(element);
 	}
 });

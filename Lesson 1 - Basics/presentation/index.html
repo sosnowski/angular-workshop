@@ -35,7 +35,7 @@
 				<section>
 					<h1>JavaScript / AngularJS Induction</h1>
 					<p><b>Damian Sosnowski</b><br />damian.sosnowski@barclays.com</p>
-					<p>Materials: <a href="https://github.com/sosnowski/angular-workshop/tree/v2">https://github.com/sosnowski/angular-workshop/tree/v2</a></p>
+					<p>Materials: <a href="https://github.com/sosnowski/angular-workshop/tree/vc">https://github.com/sosnowski/angular-workshop/tree/vc</a></p>
 				</section>
 
 				<section>
@@ -78,6 +78,31 @@ function test () {
 };
 
 console.log(a); // 4
+					</code></pre>
+				</section>
+                <section>
+					<h3>Scope!</h3>
+
+					<pre><code>
+function test () {
+    if (true) {
+        var b = 3;
+    }
+    var a = 2;
+    console.log(a); // 2
+    console.log(b); // 3
+};
+					</code></pre>
+                    <pre class="fragment"><code>
+function test () {
+    var a, b;
+    if (true) {
+        b = 3;
+    }
+    a = 2;
+    console.log(a); // 2
+    console.log(b); // 3
+};
 					</code></pre>
 				</section>
 

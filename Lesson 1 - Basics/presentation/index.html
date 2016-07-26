@@ -33,9 +33,9 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>JavaScript / AngularJS Induction</h1>
-					<p><b>Damian Sosnowski</b><br />damian.sosnowski@barclays.com</p>
-					<p>Materials: <a href="https://github.com/sosnowski/angular-workshop/tree/vc">https://github.com/sosnowski/angular-workshop/tree/vc</a></p>
+					<h1>JavaScript Induction</h1>
+					<p><b>Damian Sosnowski</b><br />damian.sosnowski@gft.com</p>
+					<p>Materials: <a href="https://github.com/sosnowski/angular-workshop">https://github.com/sosnowski/angular-workshop</a></p>
 				</section>
 
 				<section>
@@ -232,6 +232,20 @@ obj2['key'] // value;
 
 var key = 'smth';
 obj2[key]; // []
+</code></pre>
+				</section>
+
+				<section>
+					<h3>Ecma Script 6</h3>
+					<pre><code>
+function letTest() {
+  let x = 1;
+  if (true) {
+    let x = 2;  // different variable
+    console.log(x);  // 2
+  }
+  console.log(x);  // 1
+}
 </code></pre>
 				</section>
 

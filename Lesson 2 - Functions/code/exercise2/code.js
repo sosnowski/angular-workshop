@@ -25,13 +25,15 @@ var newArray = mapArray(arr, function (arrElement, index, array) {
 
 newArray; // [3, 4, 5, 6, 7, 8]
 
-var values = {
-	multiplyBy: 10;
+var valueProvider = {
+	getValue: function () {
+		return 15;
+	}
 };
 
 var newArray2 = mapArray(arr, function (arrElement, index, array) {
-	return arrElement * this.mutiplyBy;
-}, values);
+	return arrElement * this.getValue();
+}, valueProvider);
 
 newArray2; [10, 20, 30, 40, 50, 60]
 */

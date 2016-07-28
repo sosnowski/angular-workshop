@@ -341,6 +341,37 @@ module.directive('tab', function () {
 				</section>
 
 				<section>
+					<h2>Components (Angular 1.5+)</h2>
+
+					<p>Components have been introduced to match the new "components-based" approach to the web applications and 
+						push Angular 1 towards the Angular 2 architecture</p>
+				</section>
+
+				<section>
+					<h3>Components</h3>
+					<pre><code>
+angular.module('heroApp').component('heroDetail', {
+  templateUrl: 'heroDetail.html',
+  controller: HeroDetailController,
+  bindings: {
+    hero: '='
+  }
+});</code></pre>
+					<pre><code>
+<hero-detail hero="heroRecord"></hero-detail></code></pre>
+				</section>
+
+				<section>
+					<h3>Components compared to directives</h3>
+					<ul>
+						<li>Better isolation (only isolated scope)</li>
+						<li>Well defined Input / Output API</li>
+						<li>Well defined lifecycle (predefined lifecycle hooks)</li>
+						<li>Components tree should be a better approach to the GUI architecture</li>
+					</ul>
+				</section>
+
+				<section>
 						<h2>Summation</h2>
 						<h4>When should I use directives?</h4>
 						<ul>

@@ -227,6 +227,21 @@ $scope.$broadcast('eventName', arg1, arg2);
 			</section>
 
 			<section>
+				<h3>controller as</h3>
+				<p>Used instead of scope binding. Allow to bypass scope shadowing problems</p>
+				<pre><code>
+&lt;div ng-controller=&quot;MyCtrl as ctrl&quot;&gt;
+    &lt;p&gt;{{ctrl.number}} the number of the beast!&lt;/p&gt;
+&lt;/div&gt;
+        </code></pre>
+		<pre><code>
+module.controller('MyCtrl', function ($scope) {
+	this.number = 23;
+});
+        </code></pre>
+			</section>
+
+			<section>
 				<h2>Let's code</h2>
         <ul>
 					  <li>Define the application structure and controllers</li>

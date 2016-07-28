@@ -6,10 +6,15 @@
 	}
 
 	mapArray = function (array, callback, ctx) {
-
+		var newArray = [];
+		for (var i = 0; i < array.length; i++) {
+			newArray.push(callback.call(ctx, array[i], i, array));
+		}
+		return newArray;
 	};
 
 	global.APP.mapArray = mapArray;
+
 
 }(window));
 

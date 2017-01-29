@@ -1,0 +1,83 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Positioning types</title>
+    <link rel="stylesheet" type="text/css" href="position.css">
+</head>
+<body>
+    <section class="demo">
+        <section class="settings">
+            Select display type:
+            <select name="displayType">
+                <option value="static" selected>position: static; (default)</option>
+                <option value="relative">position: relative;</option>
+                <option value="absolute">position: absolute;</option>
+                <option value="fixed">position: fixed;</option>
+            </select>
+
+            <input type="range" min="0" max="500" name="top" value="0"/> top
+
+            <input type="range" min="0" max="500" name="left" value="0"/> left
+        </section>
+
+        <section class="container">
+            <div>Positioned element</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel placerat felis. Cras feugiat mi et velit vestibulum cursus. Sed quam nunc, maximus vitae sem non, malesuada tincidunt odio. Phasellus tristique at dolor non facilisis. Mauris faucibus nec justo a facilisis. Donec ut lectus mollis, eleifend lacus in, tincidunt tellus. Donec nunc mauris, dapibus ac sapien sit amet, blandit consequat arcu. Mauris condimentum mi venenatis nisl iaculis tincidunt. Vestibulum sem nisi, porta in bibendum sed, molestie nec diam. Proin ut leo urna. Fusce dapibus nulla sapien, sed vehicula risus mattis ut. Fusce quis porta mauris, ac laoreet metus.</p>
+
+<p>Pellentesque cursus luctus luctus. Duis eget libero eget quam viverra volutpat id non felis. Nam vestibulum massa at purus aliquet tempor. Aliquam sagittis vestibulum nulla ut suscipit. Curabitur vel risus at nisi imperdiet euismod vel et felis. Cras quam urna, molestie et dapibus nec, pellentesque ac tellus. Morbi et nisi nulla.</p>
+
+<p>Aliquam molestie feugiat dolor, ac auctor magna iaculis id. Nam neque eros, blandit a metus ac, dictum sodales elit. Donec non pulvinar nisl. Donec vel mollis lectus. Maecenas ultricies volutpat nisi et posuere. Nam facilisis neque quis elit porttitor cursus. Phasellus lacinia sapien ut augue luctus pretium. Pellentesque fringilla luctus ultrices. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet at elit id iaculis. Suspendisse volutpat auctor erat, in sollicitudin dolor. Nunc feugiat urna ligula, sed convallis augue ultrices quis. Nullam dui dui, scelerisque non commodo eget, faucibus nec neque.</p>
+
+<p>Morbi molestie turpis eros, sollicitudin convallis nisi fermentum non. Nam dapibus, turpis ac ornare rutrum, arcu lectus dapibus sem, sit amet imperdiet orci mi eget nibh. Morbi auctor lorem in tincidunt porta. Morbi ultricies, nulla non varius condimentum, nisi urna cursus nisi, at dapibus felis justo in risus. Donec congue blandit est. Integer tincidunt tellus eu tincidunt rutrum. Maecenas non elementum massa. Mauris elementum ex eu fringilla luctus. Nulla ut ornare turpis. Nam iaculis molestie nunc ac tempus.</p>
+
+<p>Pellentesque tempor erat leo, vitae dictum velit finibus sed. Cras in maximus mauris. Aenean malesuada, dolor id elementum sagittis, lorem ante egestas orci, ac imperdiet velit libero sed mauris. Duis nisl justo, iaculis eu fringilla eu, eleifend vitae risus. Integer pretium nibh eu elit iaculis, at maximus turpis euismod. Donec pharetra maximus arcu. Etiam nec odio congue diam vestibulum tempus non consequat magna. Curabitur aliquet finibus est ac varius. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel placerat felis. Cras feugiat mi et velit vestibulum cursus. Sed quam nunc, maximus vitae sem non, malesuada tincidunt odio. Phasellus tristique at dolor non facilisis. Mauris faucibus nec justo a facilisis. Donec ut lectus mollis, eleifend lacus in, tincidunt tellus. Donec nunc mauris, dapibus ac sapien sit amet, blandit consequat arcu. Mauris condimentum mi venenatis nisl iaculis tincidunt. Vestibulum sem nisi, porta in bibendum sed, molestie nec diam. Proin ut leo urna. Fusce dapibus nulla sapien, sed vehicula risus mattis ut. Fusce quis porta mauris, ac laoreet metus.</p>
+
+<p>Pellentesque cursus luctus luctus. Duis eget libero eget quam viverra volutpat id non felis. Nam vestibulum massa at purus aliquet tempor. Aliquam sagittis vestibulum nulla ut suscipit. Curabitur vel risus at nisi imperdiet euismod vel et felis. Cras quam urna, molestie et dapibus nec, pellentesque ac tellus. Morbi et nisi nulla.</p>
+
+<p>Aliquam molestie feugiat dolor, ac auctor magna iaculis id. Nam neque eros, blandit a metus ac, dictum sodales elit. Donec non pulvinar nisl. Donec vel mollis lectus. Maecenas ultricies volutpat nisi et posuere. Nam facilisis neque quis elit porttitor cursus. Phasellus lacinia sapien ut augue luctus pretium. Pellentesque fringilla luctus ultrices. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet at elit id iaculis. Suspendisse volutpat auctor erat, in sollicitudin dolor. Nunc feugiat urna ligula, sed convallis augue ultrices quis. Nullam dui dui, scelerisque non commodo eget, faucibus nec neque.</p>
+
+<p>Morbi molestie turpis eros, sollicitudin convallis nisi fermentum non. Nam dapibus, turpis ac ornare rutrum, arcu lectus dapibus sem, sit amet imperdiet orci mi eget nibh. Morbi auctor lorem in tincidunt porta. Morbi ultricies, nulla non varius condimentum, nisi urna cursus nisi, at dapibus felis justo in risus. Donec congue blandit est. Integer tincidunt tellus eu tincidunt rutrum. Maecenas non elementum massa. Mauris elementum ex eu fringilla luctus. Nulla ut ornare turpis. Nam iaculis molestie nunc ac tempus.</p>
+
+<p>Pellentesque tempor erat leo, vitae dictum velit finibus sed. Cras in maximus mauris. Aenean malesuada, dolor id elementum sagittis, lorem ante egestas orci, ac imperdiet velit libero sed mauris. Duis nisl justo, iaculis eu fringilla eu, eleifend vitae risus. Integer pretium nibh eu elit iaculis, at maximus turpis euismod. Donec pharetra maximus arcu. Etiam nec odio congue diam vestibulum tempus non consequat magna. Curabitur aliquet finibus est ac varius. </p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel placerat felis. Cras feugiat mi et velit vestibulum cursus. Sed quam nunc, maximus vitae sem non, malesuada tincidunt odio. Phasellus tristique at dolor non facilisis. Mauris faucibus nec justo a facilisis. Donec ut lectus mollis, eleifend lacus in, tincidunt tellus. Donec nunc mauris, dapibus ac sapien sit amet, blandit consequat arcu. Mauris condimentum mi venenatis nisl iaculis tincidunt. Vestibulum sem nisi, porta in bibendum sed, molestie nec diam. Proin ut leo urna. Fusce dapibus nulla sapien, sed vehicula risus mattis ut. Fusce quis porta mauris, ac laoreet metus.</p>
+
+<p>Pellentesque cursus luctus luctus. Duis eget libero eget quam viverra volutpat id non felis. Nam vestibulum massa at purus aliquet tempor. Aliquam sagittis vestibulum nulla ut suscipit. Curabitur vel risus at nisi imperdiet euismod vel et felis. Cras quam urna, molestie et dapibus nec, pellentesque ac tellus. Morbi et nisi nulla.</p>
+
+<p>Aliquam molestie feugiat dolor, ac auctor magna iaculis id. Nam neque eros, blandit a metus ac, dictum sodales elit. Donec non pulvinar nisl. Donec vel mollis lectus. Maecenas ultricies volutpat nisi et posuere. Nam facilisis neque quis elit porttitor cursus. Phasellus lacinia sapien ut augue luctus pretium. Pellentesque fringilla luctus ultrices. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec aliquet at elit id iaculis. Suspendisse volutpat auctor erat, in sollicitudin dolor. Nunc feugiat urna ligula, sed convallis augue ultrices quis. Nullam dui dui, scelerisque non commodo eget, faucibus nec neque.</p>
+
+<p>Morbi molestie turpis eros, sollicitudin convallis nisi fermentum non. Nam dapibus, turpis ac ornare rutrum, arcu lectus dapibus sem, sit amet imperdiet orci mi eget nibh. Morbi auctor lorem in tincidunt porta. Morbi ultricies, nulla non varius condimentum, nisi urna cursus nisi, at dapibus felis justo in risus. Donec congue blandit est. Integer tincidunt tellus eu tincidunt rutrum. Maecenas non elementum massa. Mauris elementum ex eu fringilla luctus. Nulla ut ornare turpis. Nam iaculis molestie nunc ac tempus.</p>
+
+<p>Pellentesque tempor erat leo, vitae dictum velit finibus sed. Cras in maximus mauris. Aenean malesuada, dolor id elementum sagittis, lorem ante egestas orci, ac imperdiet velit libero sed mauris. Duis nisl justo, iaculis eu fringilla eu, eleifend vitae risus. Integer pretium nibh eu elit iaculis, at maximus turpis euismod. Donec pharetra maximus arcu. Etiam nec odio congue diam vestibulum tempus non consequat magna. Curabitur aliquet finibus est ac varius. </p>
+        </section>
+    </section>
+
+    <script type="text/javascript">
+        var setClass = function (container, positionType, top, left) {
+            var divEl = container.querySelector('div');
+            container.setAttribute('class', 'container ' + positionType);
+            divEl.style.top = top + 'px';
+            divEl.style.left = left + 'px';
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var demoContainer = document.querySelector('.demo .container');
+            var select = document.querySelector('.settings select');
+            var topEl = document.querySelector('.settings input[name=top]');
+            var leftEl = document.querySelector('.settings input[name=left]');
+
+            select.addEventListener('input', function (e) {
+                setClass(demoContainer, select.value, topEl.value, leftEl.value);
+            });
+            topEl.addEventListener('input', function (e) {
+                setClass(demoContainer, select.value, topEl.value, leftEl.value);
+            });
+            leftEl.addEventListener('input', function (e) {
+                setClass(demoContainer, select.value, topEl.value, leftEl.value);
+            });
+
+            setClass(demoContainer, select.value, topEl.value, leftEl.value);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Display types</title>
+    <link rel="stylesheet" type="text/css" href="display.css">
+</head>
+<body>
+    <section class="demo">
+        <section class="settings">
+            Select display type:
+            <select name="displayType">
+                <option value="block" selected>display: block;</option>
+                <option value="inline">display: inline;</option>
+                <option value="inline-block">display: inline-block;</option>
+                <option value="none">display: none;</option>
+            </select>
+
+            <input type="checkbox" name="size"/> Apply size (150px/100px)
+
+            <input type="checkbox" name="padding" checked/> Apply padding and margin (15px and 5px)
+        </section>
+
+        <section class="container">
+            <div>Some content 1</div>
+            <div>Some content 2</div>
+            <div>Some content 3</div>
+            <div>Some content 4</div>
+            <div>Some content 5</div>
+            <div>Some content 6</div>
+            <div>Some content 7</div>
+            <div>Some content 8</div>
+            <div>Some content 9</div>
+            <div>Some content 10</div>
+        </section>
+    </section>
+
+    <script type="text/javascript">
+        var setClass = function (container, displayType, applySize, applyPadding) {
+            container.setAttribute('class', 'container ' + displayType);
+            if (applySize) {
+                container.classList.add('size');
+            } else {
+                container.classList.remove('size');
+            }
+            if (applyPadding) {
+                container.classList.add('padding');
+            } else {
+                container.classList.remove('padding');
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            var demoContainer = document.querySelector('.demo .container');
+            var select = document.querySelector('.settings select');
+            var sizeCheck = document.querySelector('.settings input[name=size]');
+            var paddingCheck = document.querySelector('.settings input[name=padding]');
+            sizeCheck.checked = false;
+            select.addEventListener('input', function (e) {
+                setClass(demoContainer, e.target.value, sizeCheck.checked, paddingCheck.checked);
+            });
+            sizeCheck.addEventListener('input', function (e) {
+                setClass(demoContainer, select.value, sizeCheck.checked, paddingCheck.checked);
+            });
+            paddingCheck.addEventListener('input', function (e) {
+                setClass(demoContainer, select.value, sizeCheck.checked, paddingCheck.checked);
+            });
+
+            setClass(demoContainer, select.value, sizeCheck.checked, paddingCheck.checked);
+        });
+    </script>
+</body>
+</html>

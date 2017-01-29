@@ -1,0 +1,46 @@
+body {
+    background: #222;
+    padding: 20px;
+    color: #fff;
+}
+
+.settings {
+    margin: 20px;
+    font-size: 20px;
+}
+.settings > * {
+    display: inline-block;
+}
+.settings > select {
+    margin-right: 20px;
+}
+
+.container div {
+    background: #42affa;
+    opacity: 0.7;
+    border: 2px solid #fff;
+}
+
+.container.block div {
+    display: block;
+}
+
+.container.size div {
+    width: 150px;
+    height: 100px;
+}
+.container.padding div {
+    padding: 15px;
+    margin: 5px;
+}
+
+.container.inline div {
+    display: inline;
+}
+
+.container.inline-block div {
+    display: inline-block;
+}
+.container.none div {
+    display: none;
+}
